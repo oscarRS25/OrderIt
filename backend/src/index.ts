@@ -24,13 +24,7 @@ class Server {
     }
 
     routes(): void {
-        this.app.use('/api/user', userRoutes);
-        // this.app.use('/api/proyecto',proyectoRoutes);
-        // this.app.use('/api/nota',notaRoutes);
-        // this.app.use('/api/actividad',actividadRoutes);
-        // this.app.use('/api/recurso',recursoRoutes);
-        // this.app.use('/api/area', areaRoutes);
-        // this.app.use('/api/empresa', empresaRoutes);
+        this.app.use('/api/users', userRoutes);
     }
 
     start() {

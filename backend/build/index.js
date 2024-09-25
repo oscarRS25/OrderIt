@@ -21,13 +21,7 @@ class Server {
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
     routes() {
-        this.app.use('/api/user', user_routes_1.default);
-        // this.app.use('/api/proyecto',proyectoRoutes);
-        // this.app.use('/api/nota',notaRoutes);
-        // this.app.use('/api/actividad',actividadRoutes);
-        // this.app.use('/api/recurso',recursoRoutes);
-        // this.app.use('/api/area', areaRoutes);
-        // this.app.use('/api/empresa', empresaRoutes);
+        this.app.use('/api/users', user_routes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
