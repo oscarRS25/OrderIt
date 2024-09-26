@@ -1,5 +1,6 @@
 // views/register_screen.dart
 import 'package:flutter/material.dart';
+import 'package:frontend/models/user_model.dart';
 import '../controllers/auth_controller.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -11,12 +12,23 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final AuthController authController = AuthController();
+  final TextEditingController apePatController = TextEditingController();
+  final TextEditingController apeMatController = TextEditingController();
+  final TextEditingController nombreController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   void register() async {
     try {
-      await authController.register(emailController.text, passwordController.text);
+      User user = User(
+        apePat: apePatController.text,
+        apeMat: apeMatController.text,
+        nombre: nombreController.text,
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      await authController.registerUser(user);
       Navigator.pop(context);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}')));
@@ -31,8 +43,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(controller: emailController, decoration: InputDecoration(labelText: 'Email')),
-            TextField(controller: passwordController, decoration: InputDecoration(labelText: 'Password'), obscureText: true),
+            TextField(controller: apePatController, decoration: const InputDecoration(labelText: 'Apellido Paterno')),
+            TextField(controller: apeMatController, decoration: const InputDecoration(labelText: 'Apellido Materno')),
+            TextField(controller: nombreController, decoration: const InputDecoration(labelText: 'Nombre')),
+            TextField(controller: emailController, decoration: const InputDecoration(labelText: 'Email')),
+            TextField(controller: passwordController, decoration: const InputDecoration(labelText: 'Password'), obscureText: true),
             SizedBox(height: 20),
             ElevatedButton(onPressed: register, child: Text('Registrar')),
           ],

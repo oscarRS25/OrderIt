@@ -1,5 +1,6 @@
 // controllers/auth_controller.dart
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:frontend/models/user_model.dart';
 import '../services/api_service.dart';
 
 class AuthController {
@@ -11,8 +12,8 @@ class AuthController {
     await storage.write(key: 'token', value: result['token']);
   }
 
-  Future<void> register(String email, String password) async {
-    await apiService.register(email, password);
+  Future<void> registerUser(User user) async {
+    await apiService.registerUser(user);
   }
 
   Future<String?> getToken() async {

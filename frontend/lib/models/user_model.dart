@@ -12,4 +12,14 @@ class User {
     required this.email, 
     required this.password
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'apePat': apePat,
+      'apeMat': apeMat,
+      'nombre': nombre,
+      'email': email,
+      'password': password,
+    };
+  }
 }
