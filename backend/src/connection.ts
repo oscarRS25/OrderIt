@@ -1,10 +1,10 @@
 import mysql from 'promise-mysql';
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '123456',
-    database: 'orderit',
+    host: 'sql.freesqldatabase.com',
+    user: 'sql3737832',
+    password: '26RYgsSb1h',
+    database: 'sql3737832',
 });
 
 pool.getConnection()
