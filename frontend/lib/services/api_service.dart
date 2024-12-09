@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ApiService {
-  final String baseUrl = 'http://10.0.2.2:3000/api/users';
+  //final String baseUrl = 'http://10.0.2.2:3000/api/users';
+  final String baseUrl = 'http://127.0.0.1:3000/api/users';
 
   Future<Map<String, dynamic>> login(String email, String password) async {
     final response = await http.post(
